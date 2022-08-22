@@ -30,7 +30,7 @@ var ws;
     ws.send(dp);//
   }
 
-  function WebSocket()
+  function WebSocketTest()
   {
     alert("WebSocket启动!"); 
     console.log("local_host: %s",window.location.host); 
