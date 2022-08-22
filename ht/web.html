@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>通用调试工具</title>
+    <style>
+      form {
+        padding: 20px;
+        width: 400px;
+        box-shadow: 0 0 20px #888;
+        border-radius: 1px;
+        box-sizing: border-box;
+        margin: auto;
+        background-color: lightblue;
+        display: grid;
+        gap: 10px;
+      }
+      h3 {
+        text-align: center;
+      }
+      h5 {
+        text-align: center;
+      }
+      input {
+        height: 30px;
+        width: 50px;
+        border: none;
+        outline: none;
+      }
+      select {
+        background-color: Gainsboro ;
+        height: 30px;
+        width: 60px;
+        border: none;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>通用调试工具</h3>
+    <h5>app version: %s     release time: %s</h5>
+    <form id ='form1'action='ctrl' method='get'>
+      <div id='IO1'>
+        <label>IO1：</label>
+		    <select id='IO1_mode' name='IO1_mode' onchange="changeStateById('IO1_mode')">
+          <option value='0'>输入</option>
+          <option value='1'>输出</option>
+			    <option value='2'>pwm</option>
+        </select>
+		    <select id='IO1_pull' name='IO1_pull' onchange="changeStateById('IO1_pull')">
+          <option value='0'>浮空</option>
+          <option value='1'>上拉</option>
+			    <option value='2'>下拉</option>
+        </select>
+      </div>
+      <div id='input1'>
+        <label>当前电平：</label>
+        <label></label>
+      </div>
+      <div id='output1'>
+        <label>输出：</label>
+        <select id='level1' onchange="changeStateById('level1')">
+          <option value='0'>低电平</option>
+          <option value='1'>高电平</option>
+        </select>
+      </div>
+      <div id='pwm1'>
+        <label>周期：</label>
+        <input id='period1' onchange="changeStateById('period1')">
+        <label>占空比：</label>
+        <input id='duty1' onchange="changeStateById('duty1')">
+      </div>
+      <label>----------------------------------------------------</label>
+      <div id='IO2'>
+        <label>IO2：</label>
+        <select id='IO2_mode' name='IO2_mode' onchange="changeStateById('IO2_mode')">
+          <option value='0'>输入</option>
+          <option value='1'>输出</option>
+          <option value='2'>pwm</option>
+        </select>
+        <select id='IO2_pull' name='IO2_pull' onchange="changeStateById('IO2_pull')">
+          <option value='0'>浮空</option>
+          <option value='1'>上拉</option>
+          <option value='2'>下拉</option>
+        </select>
+      </div>
+      <div id='input2'>
+        <label>当前电平：</label>
+        <label></label>
+      </div>
+      <div id='output2'>
+        <label>输出：</label>
+        <select id='level2' onchange="changeStateById('level2')">
+          <option value='0'>低电平</option>
+          <option value='1'>高电平</option>
+        </select>
+      </div>
+      <div id='pwm2'>
+        <label>周期：</label>
+        <input id='period2' onchange="changeStateById('period2')">
+        <label>占空比：</label>
+        <input id='duty2' onchange="changeStateById('duty2')">
+      </div>
+      <label>----------------------------------------------------</label>
+      <div id='adc'>
+        <label>adc比例：</label>
+        <input id='scale' onchange="changeStateById('scale')">
+        <label>当前ad值：</label>
+        <label id='adc' onchange="changeStateById('adc')"></label>
+      </div>
+      <div id="sse">
+        <a href="javascript:WebSocketTest()">运行 WebSocket</a>
+      </div>
+    </form>
+  </body>
+</html>
+<script src="https://www.jq22.com/jquery/jquery-3.3.1.js"></script>
+<script type='text/javascript'>
+  var ws;
+
+  function changeStateById(id)
+  {
+    var i = document.getElementById(id);
+    var obj = new Object();
+    obj[id] = i.value;
+    console.log("changeStateById: %s",id);
+    dp = JSON.stringify(obj);
+    ws.send(dp);
+    console.log(dp);
+  }
+
+  function test(index)
+  {
+    $('#IO2_pull').val(index);
+  }
+
+
+  function deal_with_recdata(data)  
+  {
+    var obj = JSON.parse(data);
+    console.log(obj.a);
+    // if(obj.IO1_mode)
+  }
+
+  function send_data()  
+  {
+    var obj = {"a":"aaa","b":"bbb"};
+    dp = JSON.stringify(obj);
+    ws.send(dp);//
+  }
+
+  function WebSocketTest()
+  {
+    alert("WebSocket启动!"); 
+    if ("WebSocket" in window)
+    {
+      console.log("您的浏览器支持 WebSocket!"); 
+      // 打开一个 web socket
+      ws = new WebSocket("ws://%s:80/ws");
+      ws.onopen = function()
+      {
+        // Web Socket 已连接上，使用 send() 方法发送数据
+        // ws.send("发送数据");
+        send_data();
+        console.log("数据发送中...");
+      };
+      
+      ws.onmessage = function (evt) 
+      { 
+        var received_msg = evt.data;
+        console.log("数据已接收...");
+        console.log(received_msg);
+        deal_with_recdata(received_msg);
+      };
+      
+      ws.onclose = function()
+      { 
+        // 关闭 websocket
+        alert("连接已关闭..."); 
+      };
+    }
+    
+    else
+    {
+      // 浏览器不支持 WebSocket
+      alert("您的浏览器不支持 WebSocket!");
+    }
+  }
+</script>
