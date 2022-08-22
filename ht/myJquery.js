@@ -1,6 +1,11 @@
 <script type='text/javascript'>
   var ws;
 
+  function sendHelloWorld()
+  {
+    alert("hello world"); 
+  }
+
   function changeStateById(id)
   {
     var i = document.getElementById(id);
