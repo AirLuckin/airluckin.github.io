@@ -1,5 +1,4 @@
-<script type='text/javascript'>
-  var ws;
+var ws;
 
   function sendHelloWorld()
   {
@@ -75,4 +74,3 @@
       alert("您的浏览器不支持 WebSocket!");
     }
   }
-</script>
