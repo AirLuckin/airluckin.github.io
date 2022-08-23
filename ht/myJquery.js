@@ -4,7 +4,7 @@ var ws;
     var obj = new Object();
     if(id == 1)
     {
-      obj['IO1_refresh'] = Number(document.getElementById('IO1_refresh').value);
+      obj['IO1_refresh'] = 1;
       obj['IO1_mode'] = Number(document.getElementById('IO1_mode').value);
       obj['IO1_pull'] = Number(document.getElementById('IO1_pull').value);
       obj['IO1_level'] = Number(document.getElementById('IO1_level').value);
@@ -13,7 +13,7 @@ var ws;
     }
     else if(id == 2)
     {
-      obj['IO2_refresh'] = Number(document.getElementById('IO2_refresh').value);
+      obj['IO2_refresh'] = 1;
       obj['IO2_mode'] = Number(document.getElementById('IO2_mode').value);
       obj['IO2_pull'] = Number(document.getElementById('IO2_pull').value);
       obj['IO2_level'] = Number(document.getElementById('IO2_level').value);
@@ -28,13 +28,13 @@ var ws;
 
   function changeStateById(id)
   {
-    var i = document.getElementById(id);
-    var obj = new Object();
-    obj[id] = Number(i.value);
-    console.log("changeStateById: %s",id);
-    dp = JSON.stringify(obj);
-    ws.send(dp);
-    console.log(dp);
+    // var i = document.getElementById(id);
+    // var obj = new Object();
+    // obj[id] = Number(i.value);
+    // console.log("changeStateById: %s",id);
+    // dp = JSON.stringify(obj);
+    // ws.send(dp);
+    // console.log(dp);
   }
 
   function test(index)
