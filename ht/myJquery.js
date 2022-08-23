@@ -3,7 +3,7 @@ var ws;
   {
     var i = document.getElementById(id);
     var obj = new Object();
-    obj[id] = i.value;
+    obj[id] = Number(i.value);
     console.log("changeStateById: %s",id);
     dp = JSON.stringify(obj);
     ws.send(dp);
