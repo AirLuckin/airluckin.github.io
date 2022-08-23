@@ -1,4 +1,31 @@
 var ws;
+  function refleshSetting(id)
+  {
+    var obj = new Object();
+    if(id == 1)
+    {
+      obj['IO1_refresh'] = Number(document.getElementById('IO1_refresh').value);
+      obj['IO1_mode'] = Number(document.getElementById('IO1_mode').value);
+      obj['IO1_pull'] = Number(document.getElementById('IO1_pull').value);
+      obj['IO1_level'] = Number(document.getElementById('IO1_level').value);
+      obj['IO1_period'] = Number(document.getElementById('IO1_period').value);
+      obj['IO1_duty'] = Number(document.getElementById('IO1_duty').value);
+    }
+    else if(id == 2)
+    {
+      obj['IO2_refresh'] = Number(document.getElementById('IO2_refresh').value);
+      obj['IO2_mode'] = Number(document.getElementById('IO2_mode').value);
+      obj['IO2_pull'] = Number(document.getElementById('IO2_pull').value);
+      obj['IO2_level'] = Number(document.getElementById('IO2_level').value);
+      obj['IO2_period'] = Number(document.getElementById('IO2_period').value);
+      obj['IO2_duty'] = Number(document.getElementById('IO2_duty').value);
+    }
+    
+    dp = JSON.stringify(obj);
+    ws.send(dp);
+    console.log(dp);
+  }
+
   function changeStateById(id)
   {
     var i = document.getElementById(id);
