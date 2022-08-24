@@ -28,13 +28,57 @@ var ws;
 
   function changeStateById(id)
   {
-    // var i = document.getElementById(id);
-    // var obj = new Object();
-    // obj[id] = Number(i.value);
-    // console.log("changeStateById: %s",id);
-    // dp = JSON.stringify(obj);
-    // ws.send(dp);
-    // console.log(dp);
+    var id1;
+    if(id == "IO1_mode")
+    {
+      id1 = document.getElementById(id);
+      if(id1.value == 0)
+      {
+        var id2 = document.getElementById("output1");
+        id2.style.display = "none";
+        id2 = document.getElementById("pwm1");
+        id2.style.display = "none";
+      }
+      else if(id1.value == 1)
+      {
+        var id2 = document.getElementById("input1");
+        id2.style.display = "none";
+        id2 = document.getElementById("pwm1");
+        id2.style.display = "none";
+      }
+      else if(id1.value == 2)
+      {
+        var id2 = document.getElementById("input1");
+        id2.style.display = "none";
+        id2 = document.getElementById("output1");
+        id2.style.display = "none";
+      }
+    }
+    else if(id == "IO2_mode")
+    {
+      id1 = document.getElementById(id);
+      if(id1.value == 0)
+      {
+        var id2 = document.getElementById("output2");
+        id2.style.display = "none";
+        id2 = document.getElementById("pwm2");
+        id2.style.display = "none";
+      }
+      else if(id1.value == 1)
+      {
+        var id2 = document.getElementById("input2");
+        id2.style.display = "none";
+        id2 = document.getElementById("pwm2");
+        id2.style.display = "none";
+      }
+      else if(id1.value == 2)
+      {
+        var id2 = document.getElementById("input2");
+        id2.style.display = "none";
+        id2 = document.getElementById("output2");
+        id2.style.display = "none";
+      }
+    }
   }
 
   function test(index)
