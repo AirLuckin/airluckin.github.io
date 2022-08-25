@@ -39,7 +39,7 @@ var ws;
         id2 = document.getElementById("pwm1");
         id2.style.display = "none";
         id2 = document.getElementById("input1");
-        id2.style.display = "dispaly";
+        id2.style.display = "block";
       }
       else if(id1.value == 1)
       {
@@ -48,7 +48,7 @@ var ws;
         id2 = document.getElementById("pwm1");
         id2.style.display = "none";
         id2 = document.getElementById("output1");
-        id2.style.display = "dispaly";
+        id2.style.display = "block";
       }
       else if(id1.value == 2)
       {
@@ -57,7 +57,7 @@ var ws;
         id2 = document.getElementById("output1");
         id2.style.display = "none";
         id2 = document.getElementById("pwm1");
-        id2.style.display = "dispaly";
+        id2.style.display = "block";
       }
     }
     else if(id == "IO2_mode")
@@ -70,7 +70,7 @@ var ws;
         id2 = document.getElementById("pwm2");
         id2.style.display = "none";
         id2 = document.getElementById("input2");
-        id2.style.display = "dispaly";
+        id2.style.display = "block";
       }
       else if(id1.value == 1)
       {
@@ -79,7 +79,7 @@ var ws;
         id2 = document.getElementById("pwm2");
         id2.style.display = "none";
         id2 = document.getElementById("output2");
-        id2.style.display = "dispaly";
+        id2.style.display = "block";
       }
       else if(id1.value == 2)
       {
@@ -88,7 +88,7 @@ var ws;
         id2 = document.getElementById("output2");
         id2.style.display = "none";
         id2 = document.getElementById("pwm2");
-        id2.style.display = "dispaly";
+        id2.style.display = "block";
       }
     }
   }
