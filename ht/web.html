@@ -39,7 +39,7 @@
   </head>
   <body>
     <h3>通用调试工具</h3>
-    <h5>app version: %s     release time: %s</h5>
+    <h5>app version: 1.0.0     release time: 20220825</h5>
     <form id ='form1'action='ctrl' method='get'>
       <div id='IO1'>
         <label>IO1：</label>
@@ -60,17 +60,18 @@
       </div>
       <div id='output1'>
         <label>输出：</label>
-        <select id='level1' onchange="changeStateById('level1')">
+        <select id='IO1_level' onchange="changeStateById('IO1_level')">
           <option value='0'>低电平</option>
           <option value='1'>高电平</option>
         </select>
       </div>
       <div id='pwm1'>
         <label>周期：</label>
-        <input id='period1' onchange="changeStateById('period1')">
+        <input id='IO1_period' onchange="changeStateById('IO1_period')">
         <label>占空比：</label>
-        <input id='duty1' onchange="changeStateById('duty1')">
+        <input id='IO1_duty' onchange="changeStateById('IO1_duty')">
       </div>
+      <button style="width: 60px;" type="button" onclick="refleshSetting(1)">设置</button>
       <label>----------------------------------------------------</label>
       <div id='IO2'>
         <label>IO2：</label>
@@ -91,17 +92,18 @@
       </div>
       <div id='output2'>
         <label>输出：</label>
-        <select id='level2' onchange="changeStateById('level2')">
+        <select id='IO2_level' onchange="changeStateById('IO2_level')">
           <option value='0'>低电平</option>
           <option value='1'>高电平</option>
         </select>
       </div>
       <div id='pwm2'>
         <label>周期：</label>
-        <input id='period2' onchange="changeStateById('period2')">
+        <input id='IO2_period' onchange="changeStateById('IO2_period')">
         <label>占空比：</label>
-        <input id='duty2' onchange="changeStateById('duty2')">
+        <input id='IO2_duty' onchange="changeStateById('IO2_duty')">
       </div>
+      <button style="width: 60px;" type="button" onclick="refleshSetting(1)">设置</button>
       <label>----------------------------------------------------</label>
       <div id='adc'>
         <label>adc比例：</label>
@@ -116,75 +118,5 @@
   </body>
 </html>
 <script src="https://www.jq22.com/jquery/jquery-3.3.1.js"></script>
-<script type='text/javascript'>
-  var ws;
+<script type="text/javascript" src="https://airluckin.github.io/ht/myJquery.js"></script>
 
-  function changeStateById(id)
-  {
-    var i = document.getElementById(id);
-    var obj = new Object();
-    obj[id] = Number(i.value);
-    console.log("changeStateById: %s",id);
-    dp = JSON.stringify(obj);
-    ws.send(dp);
-    console.log(dp);
-  }
-
-  function test(index)
-  {
-    $('#IO2_pull').val(index);
-  }
-
-
-  function deal_with_recdata(data)  
-  {
-    var obj = JSON.parse(data);
-    console.log(obj.a);
-    // if(obj.IO1_mode)
-  }
-
-  function send_data()  
-  {
-    var obj = {"a":"aaa","b":"bbb"};
-    dp = JSON.stringify(obj);
-    ws.send(dp);//
-  }
-
-  function WebSocketTest()
-  {
-    alert("WebSocket启动!"); 
-    if ("WebSocket" in window)
-    {
-      console.log("您的浏览器支持 WebSocket!"); 
-      // 打开一个 web socket
-      ws = new WebSocket("ws://%s:80/ws");
-      ws.onopen = function()
-      {
-        // Web Socket 已连接上，使用 send() 方法发送数据
-        // ws.send("发送数据");
-        send_data();
-        console.log("数据发送中...");
-      };
-      
-      ws.onmessage = function (evt) 
-      { 
-        var received_msg = evt.data;
-        console.log("数据已接收...");
-        console.log(received_msg);
-        deal_with_recdata(received_msg);
-      };
-      
-      ws.onclose = function()
-      { 
-        // 关闭 websocket
-        alert("连接已关闭..."); 
-      };
-    }
-    
-    else
-    {
-      // 浏览器不支持 WebSocket
-      alert("您的浏览器不支持 WebSocket!");
-    }
-  }
-</script>
