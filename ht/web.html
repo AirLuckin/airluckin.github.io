@@ -1,75 +1,264 @@
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>通用调试工具</title>
-    <style>
-      form {
-        padding: 20px;
-        width: 400px;
-        box-shadow: 0 0 20px #888;
-        border-radius: 1px;
-        box-sizing: border-box;
-        margin: auto;
-        background-color: lightblue;
-        display: grid;
-        gap: 10px;
-      }
-      h3 {
-        text-align: center;
-      }
-      h5 {
-        text-align: center;
-      }
-      input {
-        height: 30px;
-        width: 50px;
-        border: none;
-        outline: none;
-      }
-      select {
-        background-color: Gainsboro ;
-        height: 30px;
-        width: 60px;
-        border: none;
-        outline: none;
-      }
-    </style>
-  </head>
-  <body>
-    <h3>通用调试工具</h3>
-    <h5>app version: 1.0.0     release time: 20220825</h5>
-    <form id ='form1'action='ctrl' method='get'>
-      <div id='IO1'>
-        <label>IO1：</label>
-		    <select id='IO1_mode' name='IO1_mode' onchange="changeStateById('IO1_mode')">
-          <option value='0'>输入</option>
-          <option value='1'>输出</option>
-			    <option value='2'>pwm</option>
-        </select>
-		    <select id='IO1_pull' name='IO1_pull' onchange="changeStateById('IO1_pull')">
-          <option value='0'>浮空</option>
-          <option value='1'>上拉</option>
-			    <option value='2'>下拉</option>
-        </select>
-      </div>
-      <div id='input1'>
-        <label>当前电平：</label>
-        <label></label>
-      </div>
-      <div id='output1'>
-        <label>输出：</label>
-        <select id='IO1_level' onchange="changeStateById('IO1_level')">
-          <option value='0'>低电平</option>
-          <option value='1'>高电平</option>
-        </select>
-      </div>
-      <div id='pwm1'>
-        <label>周期：</label>
-        <input id='IO1_period' onchange="changeStateById('IO1_period')">
-        <label>占空比：</label>
-        <input id='IO1_duty' onchange="changeStateById('IO1_duty')">
+<head> 
+<meta charset="utf-8"> 
+<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<title>通用调试工具</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<style>
+canvas{
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+
+html, body {
+  width: 100%;
+  height: 100%; 
+  margin:0 auto;padding:0px
+}
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.left, .right, .up, .down {
+  box-sizing: border-box;
+  /* padding: 2px; */
+}
+
+.left {
+  width: 320px;
+  background: lightblue;
+}
+
+.right {
+  flex: 1 1 auto;
+}
+
+.up {
+  height: 70%;
+  background: #181818;
+}
+
+.down {
+  height: 30%;
+  background: darkcyan;
+} 
+
+.item_head{
+  background: lightseagreen;
+  width: 320px;
+  height: 25px;
+}
+
+.item_subhead{
+  background: lightgray;
+  width: 320px;
+  height: 24px;
+}
+
+.input_hz, .input_duty {
+  border: none;
+  outline: none;
+}
+
+.input_hz{
+  width: 40px;
+}
+
+.input_duty{
+  width: 30px;
+}
+
+button {
+  float: right;
+}
+</style>
+</head>
+ 
+<body>
+	<div class="container">
+		<div class="left">
+			<div class="item_left">
+        <div class="item_head">
+          <label>IO14 freq</label>
+          <input id='timer0_freq' class="input_hz">Hz
+          <label>def_duty</label>
+            <input id='timer0_duty0' class="input_duty">%
+          <button id='btn_timer0' onkeypress = "keypress('timer0')">设置</button>
+        </div>
+        <div class="item_left">
+          <div>
+            <label><input id="timer0_check1" type="checkbox" value="" /> if</label> 
+            <select id='timer0_check_io1'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer0_check_cond1'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer0_check_duty1' class="input_duty">% set duty
+            <input id='timer0_duty1' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer0_check2" type="checkbox" /> if</label> 
+            <select id='timer0_check_io2'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer0_check_cond2'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer0_check_duty2' class="input_duty">% set duty
+            <input id='timer0_duty2' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer0_check3" type="checkbox" value="" /> if</label> 
+            <select id='timer0_check_io3'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer0_check_cond3'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer0_check_duty3' class="input_duty">% set duty
+            <input id='timer0_duty3' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer0_check4" type="checkbox" value="" /> if</label> 
+            <select id='timer0_check_io4'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer0_check_cond4'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer0_check_duty4' class="input_duty">% set duty
+            <input id='timer0_duty4' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer0_check5" type="checkbox" value="" /> if</label> 
+            <select id='timer0_check_io5'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer0_check_cond5'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer0_check_duty5' class="input_duty">% set duty
+            <input id='timer0_duty5' class="input_duty">%
+          </div>  
+        </div>
+        <div class="item_head">
+          <label>IO15 freq</label>
+          <input id='timer1_freq' class="input_hz">Hz
+          <label>def_duty</label>
+            <input id='timer1_duty0' class="input_duty">%
+          <button id='btn_timer1' onkeypress = "keypress('timer1')">设置</button>
+        </div>
+        <div class="item_left">
+          <div>
+            <label><input id="timer1_check1" type="checkbox" value="" /> if</label> 
+            <select id='timer1_check_io1'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer1_check_cond1'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer1_check_duty1' class="input_duty">% set duty
+            <input id='timer1_duty1' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer1_check2" type="checkbox" /> if</label> 
+            <select id='timer1_check_io2'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer1_check_cond2'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer1_check_duty2' class="input_duty">% set duty
+            <input id='timer1_duty2' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer1_check3" type="checkbox" value="" /> if</label> 
+            <select id='timer1_check_io3'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer1_check_cond3'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer1_check_duty3' class="input_duty">% set duty
+            <input id='timer1_duty3' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer1_check4" type="checkbox" value="" /> if</label> 
+            <select id='timer1_check_io4'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer1_check_cond4'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer1_check_duty4' class="input_duty">% set duty
+            <input id='timer1_duty4' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer1_check5" type="checkbox" value="" /> if</label> 
+            <select id='timer1_check_io5'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer1_check_cond5'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer1_check_duty5' class="input_duty">% set duty
+            <input id='timer1_duty5' class="input_duty">%
+          </div>
+        </div>
       </div>
       <button style="width: 60px;" type="button" onclick="refleshSetting(1)">设置</button>
       <label>----------------------------------------------------</label>
@@ -111,11 +300,15 @@
         <label>当前ad值：</label>
         <label id='adc' onchange="changeStateById('adc')"></label>
       </div>
-      <div id="sse">
-        <a href="javascript:WebSocketTest()">运行 WebSocket</a>
-      </div>
-    </form>
-  </body>
+      <button id="randomizeData">clear</button>
+		  <div class="down">
+        <div id="sse">
+          <a href="javascript:WebSocketTest()">运行 WebSocket</a>
+        </div>
+		  </div>
+		</div>
+	</div> 
+</body>
 </html>
 <script src="https://www.jq22.com/jquery/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="https://airluckin.github.io/ht/myJquery.js"></script>
