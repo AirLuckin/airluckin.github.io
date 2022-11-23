@@ -27,7 +27,7 @@ html, body {
 }
 
 .left {
-  width: 310px;
+  width: 320px;
   background: lightblue;
 }
 
@@ -47,13 +47,13 @@ html, body {
 
 .item_head{
   background: lightseagreen;
-  width: 310px;
-  height: 30px;
+  width: 320px;
+  height: 25px;
 }
 
 .item_subhead{
   background: lightgray;
-  width: 310px;
+  width: 320px;
   height: 24px;
 }
 
@@ -63,7 +63,7 @@ html, body {
 }
 
 .input_hz{
-  width: 50px;
+  width: 40px;
 }
 
 .input_duty{
@@ -81,359 +81,361 @@ button {
 		<div class="left">
 			<div class="item_left">
         <div class="item_head">
-          <label>定时器1频率：</label>
+          <label>IO14 freq</label>
+          <input id='timer0_freq' class="input_hz">Hz
+          <label>def_duty</label>
+            <input id='timer0_duty0' class="input_duty">%
+          <button id='btn_timer0' onkeypress = "keypress('timer0')">设置</button>
+        </div>
+        <div class="item_left">
+          <div>
+            <label><input id="timer0_check1" type="checkbox" value="" /> if</label> 
+            <select id='timer0_check_io1'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer0_check_cond1'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer0_check_duty1' class="input_duty">% set duty
+            <input id='timer0_duty1' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer0_check2" type="checkbox" /> if</label> 
+            <select id='timer0_check_io2'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer0_check_cond2'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer0_check_duty2' class="input_duty">% set duty
+            <input id='timer0_duty2' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer0_check3" type="checkbox" value="" /> if</label> 
+            <select id='timer0_check_io3'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer0_check_cond3'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer0_check_duty3' class="input_duty">% set duty
+            <input id='timer0_duty3' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer0_check4" type="checkbox" value="" /> if</label> 
+            <select id='timer0_check_io4'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer0_check_cond4'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer0_check_duty4' class="input_duty">% set duty
+            <input id='timer0_duty4' class="input_duty">%
+          </div>
+          <div>
+            <label><input id="timer0_check5" type="checkbox" value="" /> if</label> 
+            <select id='timer0_check_io5'>
+              <option value='0'>IO32</option>
+              <option value='1'>IO33</option>
+              <option value='2'>IO34</option>
+              <option value='3'>IO35</option>
+            </select>
+            <select id='timer0_check_cond5'>
+              <option value='0'><</option>
+              <option value='1'>=</option>
+              <option value='2'>></option>
+            </select>
+            <input id='timer0_check_duty5' class="input_duty">% set duty
+            <input id='timer0_duty5' class="input_duty">%
+          </div>  
+        </div>
+        <div class="item_head">
+          <label>IO15 freq</label>
           <input id='timer1_freq' class="input_hz">Hz
+          <label>def_duty</label>
+            <input id='timer1_duty0' class="input_duty">%
           <button id='btn_timer1' onkeypress = "keypress('timer1')">设置</button>
         </div>
         <div class="item_left">
-          <div class = "item_subhead">
-            <label>IO14默认占空比：</label>
-            <input id='IO1_duty0' class="input_duty">%
-          </div>
           <div>
-            <label><input id="IO1_triger1" type="checkbox" value="" /> if</label> 
-            <select id='IO1_select1'>
+            <label><input id="timer1_check1" type="checkbox" value="" /> if</label> 
+            <select id='timer1_check_io1'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO1_condition1'>
+            <select id='timer1_check_cond1'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO1_duty1_compare' class="input_duty">% set duty
-            <input id='IO1_duty1' class="input_duty">%
+            <input id='timer1_check_duty1' class="input_duty">% set duty
+            <input id='timer1_duty1' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO1_triger2" type="checkbox" /> if</label> 
-            <select id='IO1_select2'>
+            <label><input id="timer1_check2" type="checkbox" /> if</label> 
+            <select id='timer1_check_io2'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO1_condition2'>
+            <select id='timer1_check_cond2'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO1_duty2_compare' class="input_duty">% set duty
-            <input id='IO1_duty2' class="input_duty">%
+            <input id='timer1_check_duty2' class="input_duty">% set duty
+            <input id='timer1_duty2' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO1_triger3" type="checkbox" value="" /> if</label> 
-            <select id='IO1_select3'>
+            <label><input id="timer1_check3" type="checkbox" value="" /> if</label> 
+            <select id='timer1_check_io3'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO1_condition3'>
+            <select id='timer1_check_cond3'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO1_duty3_compare' class="input_duty">% set duty
-            <input id='IO1_duty3' class="input_duty">%
+            <input id='timer1_check_duty3' class="input_duty">% set duty
+            <input id='timer1_duty3' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO1_triger4" type="checkbox" value="" /> if</label> 
-            <select id='IO1_select4'>
+            <label><input id="timer1_check4" type="checkbox" value="" /> if</label> 
+            <select id='timer1_check_io4'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO1_condition4'>
+            <select id='timer1_check_cond4'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO1_duty4_compare' class="input_duty">% set duty
-            <input id='IO1_duty4' class="input_duty">%
+            <input id='timer1_check_duty4' class="input_duty">% set duty
+            <input id='timer1_duty4' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO1_triger5" type="checkbox" value="" /> if</label> 
-            <select id='IO1_select5'>
+            <label><input id="timer1_check5" type="checkbox" value="" /> if</label> 
+            <select id='timer1_check_io5'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO1_condition5'>
+            <select id='timer1_check_cond5'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO1_duty5_compare' class="input_duty">% set duty
-            <input id='IO1_duty5' class="input_duty">%
-          </div>  
-        </div>
-        <div class="item_left">
-          <div class = "item_subhead">
-            <label>IO15默认占空比：</label>
-            <input id='IO2_duty0' class="input_duty">%
-          </div>
-          <div>
-            <label><input id="IO2_triger1" type="checkbox" value="" /> if</label> 
-            <select id='IO2_select1'>
-              <option value='0'>IO32</option>
-              <option value='1'>IO33</option>
-              <option value='2'>IO34</option>
-              <option value='3'>IO35</option>
-            </select>
-            <select id='IO2_condition1'>
-              <option value='0'><</option>
-              <option value='1'>=</option>
-              <option value='2'>></option>
-            </select>
-            <input id='IO2_duty1_compare' class="input_duty">% set duty
-            <input id='IO2_duty1' class="input_duty">%
-          </div>
-          <div>
-            <label><input id="IO2_triger2" type="checkbox" /> if</label> 
-            <select id='IO2_select2'>
-              <option value='0'>IO32</option>
-              <option value='1'>IO33</option>
-              <option value='2'>IO34</option>
-              <option value='3'>IO35</option>
-            </select>
-            <select id='IO2_condition2'>
-              <option value='0'><</option>
-              <option value='1'>=</option>
-              <option value='2'>></option>
-            </select>
-            <input id='IO2_duty2_compare' class="input_duty">% set duty
-            <input id='IO2_duty2' class="input_duty">%
-          </div>
-          <div>
-            <label><input id="IO2_triger3" type="checkbox" value="" /> if</label> 
-            <select id='IO2_select3'>
-              <option value='0'>IO32</option>
-              <option value='1'>IO33</option>
-              <option value='2'>IO34</option>
-              <option value='3'>IO35</option>
-            </select>
-            <select id='IO2_condition3'>
-              <option value='0'><</option>
-              <option value='1'>=</option>
-              <option value='2'>></option>
-            </select>
-            <input id='IO2_duty3_compare' class="input_duty">% set duty
-            <input id='IO2_duty3' class="input_duty">%
-          </div>
-          <div>
-            <label><input id="IO2_triger4" type="checkbox" value="" /> if</label> 
-            <select id='IO2_select4'>
-              <option value='0'>IO32</option>
-              <option value='1'>IO33</option>
-              <option value='2'>IO34</option>
-              <option value='3'>IO35</option>
-            </select>
-            <select id='IO2_condition4'>
-              <option value='0'><</option>
-              <option value='1'>=</option>
-              <option value='2'>></option>
-            </select>
-            <input id='IO2_duty4_compare' class="input_duty">% set duty
-            <input id='IO2_duty4' class="input_duty">%
-          </div>
-          <div>
-            <label><input id="IO2_triger5" type="checkbox" value="" /> if</label> 
-            <select id='IO2_select5'>
-              <option value='0'>IO32</option>
-              <option value='1'>IO33</option>
-              <option value='2'>IO34</option>
-              <option value='3'>IO35</option>
-            </select>
-            <select id='IO2_condition5'>
-              <option value='0'><</option>
-              <option value='1'>=</option>
-              <option value='2'>></option>
-            </select>
-            <input id='IO2_duty5_compare' class="input_duty">% set duty
-            <input id='IO2_duty5' class="input_duty">%
+            <input id='timer1_check_duty5' class="input_duty">% set duty
+            <input id='timer1_duty5' class="input_duty">%
           </div>
         </div>
       </div>
       <div class="item_left">
         <div class="item_head">
-          <label>定时器2频率：</label>
+          <label>IO16 freq</label>
           <input id='timer2_freq' class="input_hz">Hz
+          <label>def_duty</label>
+            <input id='timer2_duty0' class="input_duty">%
           <button id='btn_timer2' onkeypress = "keypress('timer2')">设置</button>
         </div>
         <div class="item_left">
-          <div class = "item_subhead">
-            <label>IO16默认占空比：</label>
-            <input id='IO3_duty0' class="input_duty">%
-          </div>
           <div>
-            <label><input id="IO3_triger1" type="checkbox" value="" /> if</label> 
-            <select id='IO3_select1'>
+            <label><input id="timer2_check1" type="checkbox" value="" /> if</label> 
+            <select id='timer2_check_io1'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO3_condition1'>
+            <select id='timer2_check_cond1'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO3_duty1_compare' class="input_duty">% set duty
-            <input id='IO3_duty1' class="input_duty">%
+            <input id='timer2_check_duty1' class="input_duty">% set duty
+            <input id='timer2_duty1' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO3_triger2" type="checkbox" /> if</label> 
-            <select id='IO3_select2'>
+            <label><input id="timer2_check2" type="checkbox" /> if</label> 
+            <select id='timer2_check_io2'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO3_condition2'>
+            <select id='timer2_check_cond2'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO3_duty2_compare' class="input_duty">% set duty
-            <input id='IO3_duty2' class="input_duty">%
+            <input id='timer2_check_duty2' class="input_duty">% set duty
+            <input id='timer2_duty2' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO3_triger3" type="checkbox" value="" /> if</label> 
-            <select id='IO3_select3'>
+            <label><input id="timer2_check3" type="checkbox" value="" /> if</label> 
+            <select id='timer2_check_io3'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO3_condition3'>
+            <select id='timer2_check_cond3'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO3_duty3_compare' class="input_duty">% set duty
-            <input id='IO3_duty3' class="input_duty">%
+            <input id='timer2_check_duty3' class="input_duty">% set duty
+            <input id='timer2_duty3' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO3_triger4" type="checkbox" value="" /> if</label> 
-            <select id='IO3_select4'>
+            <label><input id="timer2_check4" type="checkbox" value="" /> if</label> 
+            <select id='timer2_check_io4'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO3_condition4'>
+            <select id='timer2_check_cond4'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO3_duty4_compare' class="input_duty">% set duty
-            <input id='IO3_duty4' class="input_duty">%
+            <input id='timer2_check_duty4' class="input_duty">% set duty
+            <input id='timer2_duty4' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO3_triger5" type="checkbox" value="" /> if</label> 
-            <select id='IO3_select5'>
+            <label><input id="timer2_check5" type="checkbox" value="" /> if</label> 
+            <select id='timer2_check_io5'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO3_condition5'>
+            <select id='timer2_check_cond5'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO3_duty5_compare' class="input_duty">% set duty
-            <input id='IO3_duty5' class="input_duty">%
+            <input id='timer2_check_duty5' class="input_duty">% set duty
+            <input id='timer2_duty5' class="input_duty">%
           </div>
         </div>
+        <div class="item_head">
+          <label>IO17 freq</label>
+          <input id='timer3_freq' class="input_hz">Hz
+          <label>def_duty</label>
+            <input id='timer3_duty0' class="input_duty">%
+          <button id='btn_timer3' onkeypress = "keypress('timer3')">设置</button>
+        </div>
         <div class="item_left">
-          <div class = "item_subhead">
-            <label>IO17默认占空比：</label>
-            <input id='IO4_duty0' class="input_duty">%
-          </div>
           <div>
-            <label><input id="IO4_triger1" type="checkbox" value="" /> if</label> 
-            <select id='IO4_select1'>
+            <label><input id="timer3_check1" type="checkbox" value="" /> if</label> 
+            <select id='timer3_check_io1'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO4_condition1'>
+            <select id='timer3_check_cond1'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO4_duty1_compare' class="input_duty">% set duty
-            <input id='IO4_duty1' class="input_duty">%
+            <input id='timer3_check_duty1' class="input_duty">% set duty
+            <input id='timer3_duty1' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO4_triger2" type="checkbox" /> if</label> 
-            <select id='IO4_select2'>
+            <label><input id="timer3_check2" type="checkbox" /> if</label> 
+            <select id='timer3_check_io2'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO4_condition2'>
+            <select id='timer3_check_cond2'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO4_duty2_compare' class="input_duty">% set duty
-            <input id='IO4_duty2' class="input_duty">%
+            <input id='timer3_check_duty2' class="input_duty">% set duty
+            <input id='timer3_duty2' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO4_triger3" type="checkbox" value="" /> if</label> 
-            <select id='IO4_select3'>
+            <label><input id="timer3_check3" type="checkbox" value="" /> if</label> 
+            <select id='timer3_check_io3'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO4_condition3'>
+            <select id='timer3_check_cond3'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO4_duty3_compare' class="input_duty">% set duty
-            <input id='IO4_duty3' class="input_duty">%
+            <input id='timer3_check_duty3' class="input_duty">% set duty
+            <input id='timer3_duty3' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO4_triger4" type="checkbox" value="" /> if</label> 
-            <select id='IO4_select4'>
+            <label><input id="timer3_check4" type="checkbox" value="" /> if</label> 
+            <select id='timer3_check_io4'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO4_condition4'>
+            <select id='timer3_check_cond4'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO4_duty4_compare' class="input_duty">% set duty
-            <input id='IO4_duty4' class="input_duty">%
+            <input id='timer3_check_duty4' class="input_duty">% set duty
+            <input id='timer3_duty4' class="input_duty">%
           </div>
           <div>
-            <label><input id="IO4_triger5" type="checkbox" value="" /> if</label> 
-            <select id='IO4_select5'>
+            <label><input id="timer3_check5" type="checkbox" value="" /> if</label> 
+            <select id='timer3_check_io5'>
               <option value='0'>IO32</option>
               <option value='1'>IO33</option>
               <option value='2'>IO34</option>
               <option value='3'>IO35</option>
             </select>
-            <select id='IO4_condition5'>
+            <select id='timer3_check_cond5'>
               <option value='0'><</option>
               <option value='1'>=</option>
               <option value='2'>></option>
             </select>
-            <input id='IO4_duty5_compare' class="input_duty">% set duty
-            <input id='IO4_duty5' class="input_duty">%
+            <input id='timer3_check_duty5' class="input_duty">% set duty
+            <input id='timer3_duty5' class="input_duty">%
           </div>
         </div>
       </div>

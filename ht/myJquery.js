@@ -1,30 +1,153 @@
 var ws;
-  function refleshSetting(id)
+  function keypress(id)
   {
     var obj = new Object();
-    if(id == 1)
+    if(id == "timer0")
     {
-      obj['IO1_refresh'] = 1;
-      obj['IO1_mode'] = Number(document.getElementById('IO1_mode').value);
-      obj['IO1_pull'] = Number(document.getElementById('IO1_pull').value);
-      obj['IO1_level'] = Number(document.getElementById('IO1_level').value);
-      obj['IO1_period'] = Number(document.getElementById('IO1_period').value);
-      obj['IO1_duty'] = Number(document.getElementById('IO1_duty').value);
+      obj['timer0_freq'] = Number(document.getElementById('timer0_freq').value);
+      obj['timer0_duty0'] = Number(document.getElementById('timer0_duty0').value);
+
+      obj['timer0_check1'] = Number(document.getElementById('timer0_check1').value);
+      obj['timer0_check_io1'] = Number(document.getElementById('timer0_check_io1').value);
+      obj['timer0_check_cond1'] = Number(document.getElementById('timer0_check_cond1').value);
+      obj['timer0_check_duty1'] = Number(document.getElementById('timer0_check_duty1').value);
+      obj['timer0_duty1'] = Number(document.getElementById('timer0_duty1').value);
+
+      obj['timer0_check2'] = Number(document.getElementById('timer0_check2').value);
+      obj['timer0_check_io2'] = Number(document.getElementById('timer0_check_io2').value);
+      obj['timer0_check_cond2'] = Number(document.getElementById('timer0_check_cond2').value);
+      obj['timer0_check_duty2'] = Number(document.getElementById('timer0_check_duty2').value);
+      obj['timer0_duty2'] = Number(document.getElementById('timer0_duty2').value);
+
+      obj['timer0_check3'] = Number(document.getElementById('timer0_check3').value);
+      obj['timer0_check_io3'] = Number(document.getElementById('timer0_check_io3').value);
+      obj['timer0_check_cond3'] = Number(document.getElementById('timer0_check_cond3').value);
+      obj['timer0_check_duty3'] = Number(document.getElementById('timer0_check_duty3').value);
+      obj['timer0_duty3'] = Number(document.getElementById('timer0_duty3').value);
+
+      obj['timer0_check4'] = Number(document.getElementById('timer0_check4').value);
+      obj['timer0_check_io4'] = Number(document.getElementById('timer0_check_io4').value);
+      obj['timer0_check_cond4'] = Number(document.getElementById('timer0_check_cond4').value);
+      obj['timer0_check_duty4'] = Number(document.getElementById('timer0_check_duty4').value);
+      obj['timer0_duty4'] = Number(document.getElementById('timer0_duty4').value);
+
+      obj['timer0_check5'] = Number(document.getElementById('timer0_check5').value);
+      obj['timer0_check_io5'] = Number(document.getElementById('timer0_check_io5').value);
+      obj['timer0_check_cond5'] = Number(document.getElementById('timer0_check_cond5').value);
+      obj['timer0_check_duty5'] = Number(document.getElementById('timer0_check_duty5').value);
+      obj['timer0_duty5'] = Number(document.getElementById('timer0_duty5').value);
     }
-    else if(id == 2)
+    else if(id == "timer1")
     {
-      obj['IO2_refresh'] = 1;
-      obj['IO2_mode'] = Number(document.getElementById('IO2_mode').value);
-      obj['IO2_pull'] = Number(document.getElementById('IO2_pull').value);
-      obj['IO2_level'] = Number(document.getElementById('IO2_level').value);
-      obj['IO2_period'] = Number(document.getElementById('IO2_period').value);
-      obj['IO2_duty'] = Number(document.getElementById('IO2_duty').value);
+      obj['timer1_freq'] = Number(document.getElementById('timer1_freq').value);
+      obj['timer1_duty0'] = Number(document.getElementById('timer1_duty0').value);
+
+      obj['timer1_check1'] = Number(document.getElementById('timer1_check1').value);
+      obj['timer1_check_io1'] = Number(document.getElementById('timer1_check_io1').value);
+      obj['timer1_check_cond1'] = Number(document.getElementById('timer1_check_cond1').value);
+      obj['timer1_check_duty1'] = Number(document.getElementById('timer1_check_duty1').value);
+      obj['timer1_duty1'] = Number(document.getElementById('timer1_duty1').value);
+
+      obj['timer1_check2'] = Number(document.getElementById('timer1_check2').value);
+      obj['timer1_check_io2'] = Number(document.getElementById('timer1_check_io2').value);
+      obj['timer1_check_cond2'] = Number(document.getElementById('timer1_check_cond2').value);
+      obj['timer1_check_duty2'] = Number(document.getElementById('timer1_check_duty2').value);
+      obj['timer1_duty2'] = Number(document.getElementById('timer1_duty2').value);
+
+      obj['timer1_check3'] = Number(document.getElementById('timer1_check3').value);
+      obj['timer1_check_io3'] = Number(document.getElementById('timer1_check_io3').value);
+      obj['timer1_check_cond3'] = Number(document.getElementById('timer1_check_cond3').value);
+      obj['timer1_check_duty3'] = Number(document.getElementById('timer1_check_duty3').value);
+      obj['timer1_duty3'] = Number(document.getElementById('timer1_duty3').value);
+
+      obj['timer1_check4'] = Number(document.getElementById('timer1_check4').value);
+      obj['timer1_check_io4'] = Number(document.getElementById('timer1_check_io4').value);
+      obj['timer1_check_cond4'] = Number(document.getElementById('timer1_check_cond4').value);
+      obj['timer1_check_duty4'] = Number(document.getElementById('timer1_check_duty4').value);
+      obj['timer1_duty4'] = Number(document.getElementById('timer1_duty4').value);
+
+      obj['timer1_check5'] = Number(document.getElementById('timer1_check5').value);
+      obj['timer1_check_io5'] = Number(document.getElementById('timer1_check_io5').value);
+      obj['timer1_check_cond5'] = Number(document.getElementById('timer1_check_cond5').value);
+      obj['timer1_check_duty5'] = Number(document.getElementById('timer1_check_duty5').value);
+      obj['timer1_duty5'] = Number(document.getElementById('timer1_duty5').value);
+    }
+    else if(id == "timer2")
+    {
+      obj['timer2_freq'] = Number(document.getElementById('timer2_freq').value);
+      obj['timer2_duty0'] = Number(document.getElementById('timer2_duty0').value);
+
+      obj['timer2_check1'] = Number(document.getElementById('timer2_check1').value);
+      obj['timer2_check_io1'] = Number(document.getElementById('timer2_check_io1').value);
+      obj['timer2_check_cond1'] = Number(document.getElementById('timer2_check_cond1').value);
+      obj['timer2_check_duty1'] = Number(document.getElementById('timer2_check_duty1').value);
+      obj['timer2_duty1'] = Number(document.getElementById('timer2_duty1').value);
+
+      obj['timer2_check2'] = Number(document.getElementById('timer2_check2').value);
+      obj['timer2_check_io2'] = Number(document.getElementById('timer2_check_io2').value);
+      obj['timer2_check_cond2'] = Number(document.getElementById('timer2_check_cond2').value);
+      obj['timer2_check_duty2'] = Number(document.getElementById('timer2_check_duty2').value);
+      obj['timer2_duty2'] = Number(document.getElementById('timer2_duty2').value);
+
+      obj['timer2_check3'] = Number(document.getElementById('timer2_check3').value);
+      obj['timer2_check_io3'] = Number(document.getElementById('timer2_check_io3').value);
+      obj['timer2_check_cond3'] = Number(document.getElementById('timer2_check_cond3').value);
+      obj['timer2_check_duty3'] = Number(document.getElementById('timer2_check_duty3').value);
+      obj['timer2_duty3'] = Number(document.getElementById('timer2_duty3').value);
+
+      obj['timer2_check4'] = Number(document.getElementById('timer2_check4').value);
+      obj['timer2_check_io4'] = Number(document.getElementById('timer2_check_io4').value);
+      obj['timer2_check_cond4'] = Number(document.getElementById('timer2_check_cond4').value);
+      obj['timer2_check_duty4'] = Number(document.getElementById('timer2_check_duty4').value);
+      obj['timer2_duty4'] = Number(document.getElementById('timer2_duty4').value);
+
+      obj['timer2_check5'] = Number(document.getElementById('timer2_check5').value);
+      obj['timer2_check_io5'] = Number(document.getElementById('timer2_check_io5').value);
+      obj['timer2_check_cond5'] = Number(document.getElementById('timer2_check_cond5').value);
+      obj['timer2_check_duty5'] = Number(document.getElementById('timer2_check_duty5').value);
+      obj['timer2_duty5'] = Number(document.getElementById('timer2_duty5').value);
+    }
+    else if(id == "timer3")
+    {
+      obj['timer3_freq'] = Number(document.getElementById('timer3_freq').value);
+      obj['timer3_duty0'] = Number(document.getElementById('timer3_duty0').value);
+
+      obj['timer3_check1'] = Number(document.getElementById('timer3_check1').value);
+      obj['timer3_check_io1'] = Number(document.getElementById('timer3_check_io1').value);
+      obj['timer3_check_cond1'] = Number(document.getElementById('timer3_check_cond1').value);
+      obj['timer3_check_duty1'] = Number(document.getElementById('timer3_check_duty1').value);
+      obj['timer3_duty1'] = Number(document.getElementById('timer3_duty1').value);
+
+      obj['timer3_check2'] = Number(document.getElementById('timer3_check2').value);
+      obj['timer3_check_io2'] = Number(document.getElementById('timer3_check_io2').value);
+      obj['timer3_check_cond2'] = Number(document.getElementById('timer3_check_cond2').value);
+      obj['timer3_check_duty2'] = Number(document.getElementById('timer3_check_duty2').value);
+      obj['timer3_duty2'] = Number(document.getElementById('timer3_duty2').value);
+
+      obj['timer3_check3'] = Number(document.getElementById('timer3_check3').value);
+      obj['timer3_check_io3'] = Number(document.getElementById('timer3_check_io3').value);
+      obj['timer3_check_cond3'] = Number(document.getElementById('timer3_check_cond3').value);
+      obj['timer3_check_duty3'] = Number(document.getElementById('timer3_check_duty3').value);
+      obj['timer3_duty3'] = Number(document.getElementById('timer3_duty3').value);
+
+      obj['timer3_check4'] = Number(document.getElementById('timer3_check4').value);
+      obj['timer3_check_io4'] = Number(document.getElementById('timer3_check_io4').value);
+      obj['timer3_check_cond4'] = Number(document.getElementById('timer3_check_cond4').value);
+      obj['timer3_check_duty4'] = Number(document.getElementById('timer3_check_duty4').value);
+      obj['timer3_duty4'] = Number(document.getElementById('timer3_duty4').value);
+
+      obj['timer3_check5'] = Number(document.getElementById('timer3_check5').value);
+      obj['timer3_check_io5'] = Number(document.getElementById('timer3_check_io5').value);
+      obj['timer3_check_cond5'] = Number(document.getElementById('timer3_check_cond5').value);
+      obj['timer3_check_duty5'] = Number(document.getElementById('timer3_check_duty5').value);
+      obj['timer3_duty5'] = Number(document.getElementById('timer3_duty5').value);
     }
     
     dp = JSON.stringify(obj);
     ws.send(dp);
     console.log(dp);
   }
+
 
   function changeStateById(id)
   {
@@ -144,7 +267,7 @@ var ws;
     }
   }
 
-  /************************************************************/
+  /*********************************************************************************************************/
 
   var randomScalingFactor = function() {
     return Math.round(Math.random() * 100);
