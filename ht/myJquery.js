@@ -211,7 +211,7 @@ var ws;
     {
       console.log("您的浏览器支持 WebSocket!"); 
       // 打开一个 web socket
-      ws = new WebSocket("ws://"+window.location.host+":433/ws");
+      ws = new WebSocket("wss://"+window.location.host+":433/ws");
       ws.onopen = function()
       {
         // Web Socket 已连接上，使用 send() 方法发送数据
